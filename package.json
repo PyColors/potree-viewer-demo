@@ -1,0 +1,15 @@
+{
+  "name": "potree-viewer-demo",
+  "description": "Potree viewer",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "",
+  "author": "PyColors",
+  "license": "",
+  "scripts": {
+    "start-server": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
