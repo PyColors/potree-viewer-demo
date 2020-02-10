@@ -29,6 +29,7 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
   </head>
   <body>
     <script src="/libs/jquery/jquery-3.1.1.min.js"></script>
@@ -46,25 +47,95 @@
     <script src="libs/potree/potree.js"></script>
     <script src="libs/plasio/js/laslaz.js"></script>
     <!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->
-    document.title = ""; viewer.setEDLEnabled(true);
+    <!-- document.title = ""; viewer.setEDLEnabled(true);
     viewer.setBackground("gradient"); // ["skybox", "gradient", "black",
-    "white"]; viewer.setDescription(``);
-    <div
-      class="potree_container"
-      style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px; "
-    >
+    "white"]; viewer.setDescription(``); -->
+    <div class="potree_container" id="main">
+      <!-- HEADING -->
+      <div class="heading">
+        <h1 class="title">
+          Photogrammetric derived from
+          <a href="https://www.kayrros.com" target="_blank">Kayrros</a> -
+          <i> The global platform for earth observation analytics</i>
+        </h1>
+        Asset name: <b>Stade Diagana</b><br />
+        <!-- Asset ID: <b>7d667333f9418b88586538b1b031838f</b><br /> -->
+        Surface: <b>80917 m²</b><br />
+
+        <!-- <input
+          type="text"
+          class="input-search"
+          placeholder="Search for 3D assets..."
+          title="3D assets"
+        /> -->
+
+        <label for="title"
+          ><input
+            id="title"
+            type="text"
+            placeholder="Search for 3D assets..."
+            class="main-search__search"
+            value=""
+          />
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="search"
+            class="svg-inline--fa fa-search fa-w-16 search-icon"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+            ></path>
+          </svg>
+        </label>
+      </div>
+
+      <!-- MAP -->
+      <div
+        id="map"
+        style="position:absolute; left:10px; top:10px; height:200px; width:300px"
+      ></div>
+
+      <!-- COPYRIGHT -->
+      <div class="info-copyright">
+        Viewer powered by
+        <a href="http://potree.org" target="_blank">potree.org</a>
+      </div>
+
+      <!-- MAIN TOOLS -->
+      <div class="main-tools">
+        <div class="divider">
+          <span>Measurement</span>
+        </div>
+        <div id="tools"></div>
+      </div>
+
       <div id="potree_render_area"></div>
       <div id="potree_sidebar_container"></div>
     </div>
+
     <script>
       window.viewer = new Potree.Viewer(
         document.getElementById("potree_render_area")
       );
 
+      // viewer.loadGUI(() => {
+      //   viewer.setLanguage("fr"); // potre menu interface langage settup
+      //   $("#menu_tools")
+      //     .next()
+      //     .show();
+
+      // });
+
       viewer.setEDLEnabled(true);
       viewer.setFOV(60);
       viewer.setPointBudget(1 * 1000 * 1000);
-      document.title = "";
+      document.title = "3D";
       viewer.setEDLEnabled(true);
       viewer.setBackground("gradient"); // ["skybox", "gradient", "black", "white"];
       viewer.setDescription(``);
@@ -72,10 +143,19 @@
 
       viewer.loadGUI(() => {
         viewer.setLanguage("en");
-        // $("#menu_appearance").next().show();
-        // $("#menu_tools").next().show();
-        // $("#menu_scene").next().show();
-        // viewer.toggleSidebar();
+        // $("#menu_appearance")
+        //   .next()
+        //   .show();
+        // $("#menu_tools")
+        //   .next()
+        //   .show();
+        $("#menu_scene")
+          .next()
+          .show();
+        $("#menu_calendar")
+          .next()
+          .show();
+        viewer.toggleSidebar();
       });
 
       Potree.loadPointCloud(

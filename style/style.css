@@ -1,0 +1,101 @@
+.potree_container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+#potree_render_area {
+  background: "red";
+}
+
+#potree_sidebar_container {
+  background: "pink";
+}
+
+.title {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.heading {
+  margin: auto;
+  width: 45%;
+  z-index: 500;
+  position: absolute;
+  left: 300px;
+  right: 300px;
+  top: 10px;
+  text-align: center;
+  font-family: "Nunito Sans", "Trebuchet MS", sans-serif;
+  color: white;
+  text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black,
+    -1px -1px 1px black;
+}
+
+.info-copyright {
+  z-index: 500;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 12px;
+  color: #fafafa;
+  font-family: "Nunito Sans", "Trebuchet MS", sans-serif;
+}
+
+.main-tools {
+  z-index: 500;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  color: #fafafa;
+  font-family: "Nunito Sans", "Trebuchet MS", sans-serif;
+}
+
+/*  Search */
+.input-search {
+  /* background-image: url("./searchicon.png");
+  background-position: 10px 9px;
+  background-repeat: no-repeat;
+  width: 180px;
+  font-size: 14px;
+  padding: 10px 20px 10px 40px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-top: 12px; */
+}
+
+.main-search__search {
+  position: relative;
+  margin: 10px 0 0;
+  padding: 10px 20px 10px 20px;
+  width: 0;
+  color: #525252;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 20px;
+  background: #f9f9f9;
+  transition: width 0.4s ease;
+  outline: none;
+}
+.main-search__search:focus {
+  width: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+  .main-search__search:focus {
+    width: 75%;
+    padding: 15px 20px 15px 20px;
+  }
+}
+
+.search-icon {
+  position: relative;
+  top: 4px;
+  left: -34px;
+  color: #479fb9;
+  width: 18px;
+}
