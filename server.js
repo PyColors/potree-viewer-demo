@@ -15,3 +15,20 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log("Server listening on port " + port);
 });
+
+app.use(function(request, response, next) {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
+app.options("http://localhost:7000/items", function(request, response, next) {
+  response.header(
+    "Access-Control-Allow-Methods",
+    "GET, PUT, POST, DELETE, OPTIONS"
+  );
+  response.send();
+});

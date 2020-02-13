@@ -29,10 +29,16 @@
       rel="stylesheet"
       type="text/css"
     />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="style/calendar/ion.calendar.css"
+    />
     <link rel="stylesheet" type="text/css" href="style/style.css" />
   </head>
   <body>
-    <script src="/libs/jquery/jquery-3.1.1.min.js"></script>
+    <script src="libs/jquery/jquery-3.1.1.min.js"></script>
     <script src="libs/spectrum/spectrum.js"></script>
     <script src="libs/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="libs/jquery-ui/jquery-ui.min.js"></script>
@@ -46,6 +52,12 @@
     <script src="libs/jstree/jstree.js"></script>
     <script src="libs/potree/potree.js"></script>
     <script src="libs/plasio/js/laslaz.js"></script>
+
+    <!-- CALENDAR EXAMPLE -->
+    <script src="libs/calendar/moment-with-locales.min.js"></script>
+    <script src="libs/calendar/ion.calendar.min.js"></script>
+    <!-- CALENDAR EXAMPLE -->
+
     <!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->
     <!-- document.title = ""; viewer.setEDLEnabled(true);
     viewer.setBackground("gradient"); // ["skybox", "gradient", "black",
@@ -101,6 +113,12 @@
         style="position:absolute; left:10px; top:10px; height:200px; width:300px"
       ></div>
 
+      <!-- CALENDAR -->
+      <div class="box-calendar">
+        <div class="myCalendar" id="calendar-2"></div>
+        <div id="date-results"></div>
+      </div>
+
       <!-- COPYRIGHT -->
       <div class="info-copyright">
         Viewer powered by
@@ -123,14 +141,6 @@
       window.viewer = new Potree.Viewer(
         document.getElementById("potree_render_area")
       );
-
-      // viewer.loadGUI(() => {
-      //   viewer.setLanguage("fr"); // potre menu interface langage settup
-      //   $("#menu_tools")
-      //     .next()
-      //     .show();
-
-      // });
 
       viewer.setEDLEnabled(true);
       viewer.setFOV(60);
@@ -160,7 +170,7 @@
 
       Potree.loadPointCloud(
         "pointclouds/20190401_color/cloud.js",
-        "20190401_color",
+        "2019-04-01",
         e => {
           let pointcloud = e.pointcloud;
           let material = pointcloud.material;
@@ -172,6 +182,17 @@
           viewer.fitToScreen();
         }
       );
+    </script>
+
+    <script>
+      $("#calendar-2").ionCalendar({
+        lang: "en",
+        format: "YYYY/MM/DD",
+        onReady: function(date) {
+          $("#date-results").html("Date: " + date);
+          console.log(moment().format("MMMM Do YYYY, h:mm:ss a"));
+        }
+      });
     </script>
   </body>
 </html>
